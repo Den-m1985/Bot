@@ -1,7 +1,14 @@
-
+#необходимо установить библиотеку.
+# pip install pyTelegramBotAPI
+# разорвать соединение Ctrl C
 import telebot
+
+
+token = open("token.config", "r").read()
+
 # Создаем экземпляр бота
-bot = telebot.TeleBot('5731423337:AAGr97IwINO9S7VXf20PIx7JpGjU-IZzXow')
+bot = telebot.TeleBot(token)
+
 # Функция, обрабатывающая команду /start
 @bot.message_handler(commands=["start"])
 def start(m, res=False):

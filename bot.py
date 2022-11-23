@@ -1,8 +1,13 @@
+#необходимо установить библиотеку.
+# pip install pyTelegramBotAPI
+# разорвать соединение Ctrl C
 import telebot
-import config
 
-bot = telebot.TeleBot(config.TOKEN)
-#bot = telebot.TeleBot('5731423337:AAGr97IwINO9S7VXf20PIx7JpGjU-IZzXow')
+
+token = open("token.config", "r").read()
+
+# Создаем экземпляр бота
+bot = telebot.TeleBot(token)
 
 @bot.message_handler(commands=["start"])
 def lalala(m, res=False):

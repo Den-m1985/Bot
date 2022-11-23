@@ -1,10 +1,16 @@
 #необходимо установить библиотеку.
 #pip install wikipedia
+# pip install pyTelegramBotAPI
+# разорвать соединение Ctrl C
 
 import telebot, wikipedia, re
-import config
+
+
+token = open("token.config", "r").read()
+
 # Создаем экземпляр бота
-bot = telebot.TeleBot(config.TOKEN)
+bot = telebot.TeleBot(token)
+
 # Устанавливаем русский язык в Wikipedia
 wikipedia.set_lang("ru")
 # Чистим текст статьи в Wikipedia и ограничиваем его тысячей символов
