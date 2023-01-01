@@ -12,15 +12,17 @@ def send_welcome(message):
     markup = types.ReplyKeyboardMarkup(row_width=2)
     markupinline = types.InlineKeyboardMarkup()
     inlitem = types.InlineKeyboardButton(text='dsf', callback_data='tef')
-    itembtn1 = types.KeyboardButton(text='Список вопросов 1')
-    markup.add(itembtn1)
+    itembtn = types.KeyboardButton(text='Список вопросов 1')
+    markup.add(itembtn)
+
     markupinline.add(inlitem)
     bot.send_message(message.chat.id, "ВЫБЕРИТЕ КНОПКУ", reply_markup=markup)
-
+'''
 def read_questions_file(file_name):
     file = open(file_name, "r", encoding='utf-8')
     questions = file.read().split('\n')
     print(questions)
+'''
 
 # Обычный режим
 @bot.message_handler(content_types=["text"])
@@ -34,8 +36,7 @@ def any_msg(message):
     bot.send_message(message.chat.id, "сообщение из обычного режима", reply_markup=keyboard)
 
     if message.text == 'Список вопросов 1':
-        qs = read_questions_file('Список вопросов 1.csv')
-        bot.send_message(message.chat.id, qs[0])
+        bot.send_message(chat_id=message.from_user.id, text='Здесь')
 
 @bot.callback_query_handler(func=lambda call:True)
 def callback_inline(call):
