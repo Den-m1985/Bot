@@ -1,4 +1,5 @@
 from telebot import TeleBot, types
+import logging
 
 token = open("token.config", "r").read()
 
@@ -15,6 +16,8 @@ def start(message):
     markup.add(info, abc)
     bot.send_message(message.chat.id, text="Привет user".format(message.from_user), reply_markup=markup)
 
+    logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    level=logging.INFO)
 
 @bot.message_handler(content_types=['text'])
 def func(message):
